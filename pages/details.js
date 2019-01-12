@@ -148,7 +148,9 @@ Page({
                   success(settingdata) {
                     // console.log(settingdata)
                     if (settingdata.authSetting['scope.writePhotosAlbum']) {
+                      setTimeout(()=>{
                       that.savePhotos(upUrl)
+                      },100)
                       // console.log('获取权限成功，再次点击图片保存到相册')
                     } else {
                       wx.showToast({
