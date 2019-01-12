@@ -270,7 +270,9 @@ Page({
         // that.setData({
         //   loading: false,
         // })
-        this.getUserLocation()
+        if(!app.globalData.weather.city){
+          this.getUserLocation()
+        }
         // wx.hideLoading()
       }
     }, 10)

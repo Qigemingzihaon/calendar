@@ -1,5 +1,5 @@
-// const requestUrl = 'https://lzljhyrl.lzlj.com/aroma/';//正式
-const requestUrl = 'https://www.jollykeys.cn/aroma/'; //测试
+const requestUrl = 'https://lzljhyrl.lzlj.com/aroma/';//正式
+// const requestUrl = 'https://www.jollykeys.cn/aroma/'; //测试
 const uploadUrl = 'https://lzljhyrl.lzlj.com/aroma/oss/uploadfile';//正式
 // const uploadUrl = 'https://www.jollykeys.cn/aroma/oss/uploadfile';//测试
 // const uploadUrl = 'http://www.jollykeys.cn/gate/oss/uploadfile'

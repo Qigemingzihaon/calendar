@@ -371,7 +371,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    app.verifycoll()
   },
 
   /**
@@ -485,6 +485,7 @@ Page({
    * 更换一个模版
    */
   chg_tpl: function() {
+    // console.log(app)
     if(this.data.planshow){
       return
     }
@@ -570,7 +571,7 @@ Page({
         that.savesever(upurl)
       },
       fail(res) {
-        console.log(res.errMsg)
+        // console.log(res.errMsg)
         // that.modelshow(res.errMsg)
         if (res.errMsg === 'saveImageToPhotosAlbum:fail auth deny' ||
           res.errMsg === 'saveImageToPhotosAlbum:fail:auth denied') {
@@ -590,7 +591,9 @@ Page({
                   success(settingdata) {
                     // console.log(settingdata)
                     if (settingdata.authSetting['scope.writePhotosAlbum']) {
-                      that.savePhotos(upUrl,upurl)
+                      setTimeout(()=>{
+                        that.savePhotos(upUrl,upurl)
+                      },100)
                       // console.log('获取权限成功，再次点击图片保存到相册')
                     } else {
                       // console.log('获取权限失败')
