@@ -1,0 +1,14 @@
+<!--pages/chs_calandar.wxml-->
+<view class='contianer'>
+  <view class='xz_list'>
+     <view class="xz_item" wx:for="{{xz}}" wx:for-item="it" wx:key="name" data-name="{{it.name}}" data-id="{{index}}" bindtap='selectone'>
+      <view class="xz_logo {{it.selected ? 'selected' : ''}}" ><image src='{{it.pic}}'></image></view>
+      <view class='xz_name'>{{it.name}}</view>
+      <view class='xz_date'>{{it.date}}</view>
+     </view>
+  </view>
+  <view class='xz_sub_block'>
+    <!-- <button class='xz_submit' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" lang='zh_CN' bindgetuserinfo="getUserInfo">确定选择</button> -->
+    <button class='xz_submit' bindtap="submit">确定选择</button>
+  </view>
+</view>

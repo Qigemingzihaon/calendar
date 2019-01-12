@@ -1,0 +1,136 @@
+/* pages/main.wxss */
+.main{
+  padding: 0;
+}
+
+.main_post{
+  margin:58rpx 70rpx 4rpx 70rpx;
+  /* background-color: #000; */
+  height: calc(100% - 340rpx);
+  width: calc(100% - 140rpx);
+  position:absolute;
+}
+.planshow{
+  width: 100%;
+  margin:58rpx 0rpx 4rpx 0rpx;
+}
+.main_post image{
+  height: 100%;
+  width: 100%;
+}
+
+
+.main_btns{
+  text-align: center;
+  width: 100%;
+  height:248rpx;
+  position:fixed;
+  bottom:0;
+}
+
+.main_btn {
+  width:160rpx;
+  height:160rpx;
+  left:calc(50% - 80rpx);
+  position:fixed;
+  bottom:50rpx;
+}
+
+.mian_auth_btn {
+  width:160rpx;
+  height:160rpx;
+  left:calc(50% - 80rpx);
+  position:fixed;
+  bottom:50rpx;
+  padding:0;
+  background-color:transparent;
+  border:none;
+  color:transparent;
+}
+.mian_auth_btn::after{ border: none; } 
+
+.main_btn .btn_back {
+  width:160rpx;
+  height:160rpx;
+  position:relative;
+  left:0;
+}
+.save_btn {
+  width:125rpx;
+  height:125rpx;
+  left:20rpx;
+  position:fixed;
+  bottom:130rpx;
+}
+
+.my_btn{
+  width:125rpx;
+  height:125rpx;
+  right:20rpx;
+  position:fixed;
+  bottom:130rpx;
+}
+
+.reload_btn {
+  width:120rpx;
+  height:120rpx;
+  left:160rpx;
+  position:fixed;
+  bottom:90rpx;
+}
+
+.edit_btn{
+  width:120rpx;
+  height:120rpx;
+  right:160rpx;
+  position:fixed;
+  bottom:90rpx;
+}
+
+.s_btn_back {
+  width:125rpx;
+  height:125rpx;
+  position:relative;
+  left:0;
+}
+.text{
+  position:relative;
+  top:-15rpx;
+  font-size: 24rpx;
+  color: rgb(235, 189, 116)
+}
+.plan{
+  width: 50%;
+  height: 40%;
+  background-color: #fff;
+  padding: 30rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-family: 'Segoe UI';
+  font-size: 46rpx;
+}
+.plan .plan_number{
+  position: absolute;
+  bottom: 120rpx;
+}
+.plan .plan_text{
+  position: absolute;
+  bottom: 50rpx;
+}
+.poster{
+  /* position: absolute; */
+  /* display: none; */
+  position: fixed;
+  top: -1334px;
+  background-color: #fff;
+  z-index: 1;
+}
+.loding{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: 10000;
+  background-color: #eee;
+}

@@ -1,0 +1,33 @@
+<!--pages/mypost.wxml-->
+<official-account style="border:0rpx;"></official-account>
+
+<view class='my-title'>
+
+  <text>我的海报</text>
+  <image src="{{avatarUrl}}"></image>
+</view>
+<view class='tabs'>
+  <view class='tab_item'>
+    <view class='selected'>全部海报</view>
+    <view class='selected_line'></view>
+  </view>
+</view>
+<scroll-view scroll-y="true" scroll-top='{{topNum}}' bindscroll="scrolltoupper" bindscrolltolower="searchScrollLower">
+  <view class='post_list'>
+    <view class="post_item " wx:for="{{p_list}}" wx:key="{{logid}}" wx:for-item="it">
+      <image mode="aspectFit" class="post_img" src='{{it.imgurl}}' data-id="{{it.logid}}" bindtap='show_detail' ></image>
+      <view class='bar'>
+        <view class='left'>
+          <image class='eye'  src='/images/eye.png'></image>
+          <text>{{it.peopnum}}</text>
+        </view>
+        <view class='right'>
+          <!-- <image class="trash" src='/images/trash.png'></image> -->
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='top'hidden="{{!floorstatus}}" bindtap="goTop">
+    <image class="topimage" src='/images/top.png'></image>
+  </view>
+</scroll-view>

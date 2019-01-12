@@ -1,0 +1,58 @@
+<!--pages/main.wxml-->
+<view class='main'>
+  <view class="loding" wx:if="{{loading}}">
+    
+  </view>
+  <view class="main_post {{planshow?'planshow':''}}">
+    <image src="{{img_src}}" mode="{{planshow?'aspectFill':'aspectFit'}}"></image>
+    <view class="plan {{getimage?'':''}}"  wx:if="{{false}}">
+      <view class="plan_number">
+        {{plan}}%
+      </view>
+      <view class="plan_text">
+        {{!getimage&&!poster?'正在思考…':''}}
+        <!-- {{getimage&&!poster?'算好了…配图中':''}} -->
+        {{getimage&&!poster?'生成设计…':''}}
+        {{getimage&&poster?'生成设计…':''}}
+      </view>
+    </view>
+  </view>
+  <view class='main_btns'>
+    <!-- <button class='mian_auth_btn main_btn' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" lang='zh_CN' bindgetuserinfo="getUserInfo">
+      <image wx:if="{{!expand}}" class='btn_back' src='/images/switch.png'></image>
+      <image wx:if="{{expand}}" class='btn_back' src='/images/close.png'></image>
+    </button> -->
+    <view class='main_btn' bindtap='expand'>
+      <image wx:if="{{!expand}}" class='btn_back' src='/images/switch.png'></image>
+      <image wx:if="{{expand}}" class='btn_back' src='/images/close.png'></image>
+    </view>
+
+    <view class='save_btn' wx:if="{{expand}}" bindtap='chg_tpl'>
+      <image class='s_btn_back' src='/images/exchange.png'></image>
+      <view class='text'>换一换</view>
+    </view>
+
+    <view class='reload_btn' wx:if="{{expand}}" bindtap='edit_tpl'>
+      <image class='s_btn_back' src='/images/edit.png'></image>
+      <view class='text'>编辑</view>
+    </view>
+
+    <view class='edit_btn' wx:if="{{expand}}" bindtap='to_save'>
+      <image class='s_btn_back' src='/images/download.png'></image>
+      <view class='text'>保存</view>
+    </view>
+
+    <view class='my_btn' wx:if="{{expand}}" bindtap='to_my'>
+      <image class='s_btn_back' src='/images/my.png'></image>
+      <view class='text'>我的海报</view>
+    </view>
+  </view>
+</view>
+<!-- 海报生成 -->
+    <view class="poster" hover-class="none" hover-stop-propagation="false">
+        <canvas
+            class='myCanvas'
+            style="width: 750px; height: 1334px;"
+            canvas-id="myCanvas"
+            disable_scroll/>
+    </view>

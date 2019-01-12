@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/accredit",
+    "pages/main",
+    "pages/save",
+    "pages/mypost",
+    "pages/viewer",
+    "pages/share",
+    "pages/details",
+    "pages/login",
+    "pages/edit",
+    "pages/chs_calandar",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

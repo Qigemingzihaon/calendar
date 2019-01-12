@@ -1,0 +1,20 @@
+<!--pages/viewer.wxml-->
+<view class='title_sum'>
+  <view class='left'>用户（{{count}}人）</view>
+  <view class='right'>最后查看时间/查看方式</view>
+</view>
+<view class="search-result"> 
+<scroll-view class='lst_scroll' scroll-y="true" bindscrolltolower="searchScrollLower">
+  <view class='list-item' wx:for="{{data_list}}" wx:key="id" wx:for-item="it">
+    <view class='num'>{{it.visitid}}</view>
+    <image class='avtar' src="{{it.headurl}}"></image>
+    <view class='uname'>{{it.nickname}}</view>
+    <view class='info'>
+      <view class='date'>{{it.visittime}}</view>
+      <view class='way'>{{it.visittype? '好友分享':'通过群聊'}}</view>
+    </view>
+  </view>
+  <!-- <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>  
+  <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载所有数据</view> -->
+</scroll-view>
+</view> 

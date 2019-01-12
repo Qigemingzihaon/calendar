@@ -1,0 +1,139 @@
+/* pages/mypost.wxss */
+.my-title{
+  background-color: #fff;
+  height:150rpx;
+  
+  border-bottom:1px solid rgb(240,240,240);
+}
+.my-title text{
+  margin:54rpx;
+  float:left;
+  font-size:25px;
+  font-weight: bolder;
+  line-height: 42rpx;
+}
+.my-title image{
+  width:100rpx;
+  height:100rpx;
+  border-radius:50%;
+  margin:26rpx;
+  float:right;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  -ms-border-radius:50%;
+  -o-border-radius:50%;
+}
+
+.tabs {
+  height:90rpx;
+  background-color:#fff;
+  padding:44rpx 20rpx 0 20rpx;
+  font-size:15px;
+}
+
+.tab_item{
+  float:left;
+}
+
+.tab_item .selected{
+
+}
+
+.tab_item .selected_line{
+  height:4rpx;
+  background-color:rgb(235,189,116);
+  margin-top:14rpx;
+}
+
+.post_list{
+  margin-left:10rpx;
+  margin-right:10rpx;  
+  width:calc(100% - 20rpx);
+	/* column-count:2; */
+	column-gap: 0rpx;
+  border: 1rpx solid rgba(0, 0, 0,0)
+}
+
+ .post_item{
+   margin: 9rpx;
+   margin-top:24rpx;
+   width:calc(50% - 18rpx);
+   /* display:block; */
+   float: left;
+   vertical-align: top;
+   position: relative;
+   box-shadow:  0px -1rpx 18rpx 1rpx rgba(0, 0, 0,0.3);
+}
+
+.post_item .post_img{
+  width:100%;
+	height: 603rpx;
+  vertical-align: top;
+  border-radius:12rpx;
+}
+
+.post_item .bar{
+   width: 100%;
+   height: 60rpx;
+   background-color: rgba(0,0,0,0.54);
+
+}
+.post_item .bar .left{
+  float: left;
+  margin-left: 14rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+}
+
+.post_item .bar .right{
+  float: right;
+  margin-right: 14rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+}
+
+.post_item .bar text{
+  margin-left: 10rpx;
+  font-size: 11px;
+  color: rgb(255,255,255);
+}
+
+.post_item .bar .trash{
+  width:19rpx;
+  height: 20rpx;
+}
+
+.post_item .bar .eye{
+  width:26rpx;
+  height: 19rpx;
+}
+
+.post_item0,.post_item3{
+  /* height: 512rpx; */
+}
+
+.post_item1,.post_item2{
+   /* height: 420rpx; */
+}
+
+.top{ 
+  position: fixed; 
+  bottom: 150rpx; 
+  right: 20rpx; 
+  border-radius: 50%; 
+  overflow: hidden; 
+  z-index: 500; 
+} 
+
+.topimage{
+  display: inline-block; 
+  width: 120rpx; 
+  height: 120rpx; 
+  border-radius: 50%; 
+  -webkit-background-size: 50rpx auto;
+}
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}

@@ -1,0 +1,17 @@
+<!--pages/share.wxml-->
+<view class='contianer'>
+    <view wx:for="{{imgurl}}" wx:key="{{id}}" wx:for-item="image" class="save_post">  
+      <image src="{{image}}"  mode="aspectFit" data-src="{{image}}" bindtap="previewImage"></image>  
+    </view>
+
+  <!-- <view class='save_url'>
+    <image src='/images/gift.png' mode="aspectFit"></image>
+    <view>
+        <button open-type="contact">点击回复529，关注泸州老窖VIP俱乐部</button>
+    </view>
+  </view> -->
+  <view class='save_btns'>
+    <view class='left'><button open-type="share" class='share'>发送给朋友</button></view>
+    <view class='right' bindtap='to_index'>我也要做</view>
+  </view>
+</view>

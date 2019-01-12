@@ -1,0 +1,70 @@
+<!--pages/edit.wxml-->
+<view class="center">
+  <official-account style="border:0rpx"></official-account>
+  <view class="show">
+    <view class='title'>输入你想分享的内容</view>
+    <view class='edit_main_container'>
+      <view class='sub_title'>
+        <view class='mark'></view>
+        <view class='text'>今日关键词</view>
+        <image src='/images/change.png' bindtap='change_keywold'></image>
+      </view>
+      <view class='content_input' bindtap='edit_keyword'>
+        <text class='data-text' wx:if="{{!on_edit_keyword}}">{{keyword.keyword}}</text>
+        <text class='to-edit' wx:if="{{!on_edit_keyword}}">(点击修改1~4个字)</text>
+        <input id="keyword" maxlength="4" focus="{{on_edit_keyword}}" value='{{keyword.keyword}}' bindblur='down_edit_keywrod' wx:if="{{on_edit_keyword}}"></input>
+      </view>
+
+      <view class='sub_title'>
+        <view class='mark'></view>
+        <view class='text'>姓名</view>
+      </view>
+      <view class='content_input' bindtap='edit_name'>
+        <text class='data-text' wx:if="{{!on_edit_name}}">{{name}}</text>
+        <text class='to-edit'wx:if="{{!on_edit_name}}">(点击修改1~10个字)</text>
+        <input maxlength="10" id="name" focus="{{on_edit_name}}" value='{{name}}' bindblur='down_edit_name' wx:if="{{on_edit_name}}"></input>
+      </view>
+
+      <view class='sub_title'>
+        <view class='mark'></view>
+        <view class='text'>我的酒话</view>
+        <image src='/images/change.png' bindtap='change_wine'></image>
+      </view>
+      <view class='tab_words'>
+        <view class="{{it.selected==1?'selected':''}}" wx:for="{{wine}}" wx:key="wineid" wx:for-item="it" bindtap='select_wine' data-id="{{it.wineid}}">{{it.wordbody}}</view>
+      </view>
+
+      <view class='sub_title' wx:if="{{can_change_post_img}}">
+        <view class='mark'></view>
+        <view class='text'>上传海报图片</view>
+      </view>
+      <view class="change_post_img" wx:if="{{can_change_post_img}}">
+        <view class='post_img'></view>
+      </view>
+
+      <view class='sub_title'>
+        <view class='mark'></view>
+        <view class='text'>选择模版</view>
+      </view>
+      <scroll-view scroll-x class='tamp_list' bindscrolltolower='load_tamp'>
+        <view class="tp_item" wx:for="{{tp_list}}" wx:for-item="tp" wx:key="temid" data-index="{{index}}" bindtap='selectone'>
+          <image class="tp_img {{tp.selected ? 'selected' : ''}}" src='{{tp.backgroundurl}}'></image>
+        </view>
+      </scroll-view>
+      <view class='sub_title'>
+        <view class='mark'></view>
+        <view class='text'>选择图片</view>
+      </view>
+      <scroll-view scroll-x class='tamp_list tp_img_list' bindscrolltolower='load_tampimg'>
+        <view class="tp_item tp_img_img" wx:for="{{tampimg_list}}" wx:for-item="img" wx:key="index" data-index="{{index}}" bindtap='selectoneimg'>
+          <image mode="aspectFill" class="tp_img tp_img_img {{img.selected ? 'selected' : ''}}" src='{{img.imgurl}}'></image>
+        </view>
+      </scroll-view>
+
+  </view>
+    <view class='select_btn'>
+      <image bindtap='submit' src='/images/select.png'></image>
+    </view>
+  </view>
+
+</view>

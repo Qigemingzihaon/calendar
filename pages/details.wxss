@@ -1,0 +1,104 @@
+/* pages/details.wxss */
+.save_post{
+  width: 100%;
+  height:calc(100% - 280rpx);
+  font-family: PingFang-SC-Medium;
+  text-align: center;
+  margin: 30rpx auto 60rpx auto;
+  position: absolute;
+}
+.save_post .previewimg{
+  margin: auto;
+  width: 65%;
+  height: calc(100% - 100rpx);
+}
+.previewimg image{
+  width: 100%;
+  height: 100%;
+}
+.save_post .msg{
+  font-size:16px;
+  color:rgb(51,51,51);
+  height: 70rpx;
+  border: 1px solid rgb(255,255,255);
+  border-radius: 50rpx;
+  background-color: rgb(255,255,255);
+  margin:  32rpx calc(50% - 200rpx);
+  line-height: 70rpx;
+}
+.save_post .msg image{
+  margin-left: 38rpx;
+  height:25rpx;
+  width:25rpx;
+  line-height: 70rpx;
+}
+.save_url{
+  width: 100%;
+  height: 90rpx;
+  background-color: rgb(90,90,90);
+  color: rgb(255,255,255);
+  position:fixed;
+  bottom: 120rpx;
+  display:flex;
+  justify-content:center;
+  font-family: PingFang-SC-Medium;
+}
+.save_url image{
+  margin:14rpx 16rpx;
+  width:60rpx;
+  height: 60rpx;
+}
+.save_url view{
+  width: calc(100% - 46px);
+  text-align: left;
+  font-size:16px;
+  height:90rpx;
+  line-height: 90rpx;
+}
+.save_url view button{
+  height:90rpx;
+  line-height: 90rpx;
+  background-color: rgb(90,90,90);
+  color: rgb(255,255,255);
+}
+.save_btns{
+  width: 100%;
+  height: 120rpx;
+  position:fixed;
+  bottom: 0rpx;
+  text-align:center;
+  color: rgb(255,255,255);
+  font-size:16px;
+}
+.save_btns .right{
+  width:calc(50% - 1px);
+  height:120rpx;
+  background-color:rgb(235,189,116);
+  margin-left:1px;
+  float:right;
+  line-height: 120rpx;
+}
+.save_btns .left{
+  width:calc(50% - 1px);
+  height:120rpx;
+  background-color:rgb(235,189,116);
+  margin-right:1px;
+  float:left;
+  line-height: 120rpx;
+}
+
+.left .share{
+  width:100%;
+  height:100%;
+  font-size:30rpx;
+  background-color:rgb(235,189,116);
+  line-height: 120rpx;
+  color: rgb(255,255,255);
+}
+button::after {
+  border: none
+}
+.plain {
+  border: none;
+  border-color: transparent;
+}

@@ -1,0 +1,63 @@
+/* pages/viewer.wxss */
+page{
+  font-size: 12px;
+}
+.title_sum{
+  display:block;
+  margin:28rpx 0 18rpx 0;
+  color:rgb(153,153,153);
+  padding:0 20rpx;
+  height:30rpx;
+}
+.title_sum > .left{
+  float:left;
+}
+.title_sum > .right{
+  float:right;
+}
+.lst_scroll{
+  width:unset;
+  margin:0 20rpx;
+  background-color:#fff;
+}
+
+.list-item{
+  display:inline-block;
+  width:100%;
+  border-bottom:1px solid rgb(240,240,240);
+}
+
+.list-item > .num{
+  float:left;
+  margin:36rpx 14rpx;
+  width: 36rpx;
+}
+
+.list-item > .avtar {
+  float:left;
+  width:70rpx;
+  height:70rpx;
+  margin-top:20rpx;
+}
+
+.list-item > .uname{
+  float:left;
+  margin:36rpx 10rpx;
+  width:calc(60% - 160rpx);
+}
+
+.list-item > .info{
+  float:right;
+  margin:24rpx 24rpx 16rpx 0;
+  text-align:center;
+  width: calc(40% - 38rpx);
+}
+
+.list-item .way {
+  color:rgb(153,153,153);
+}
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}

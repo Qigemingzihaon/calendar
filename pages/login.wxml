@@ -1,0 +1,8 @@
+<!--pages/login.wxml-->
+<view class="content" style="{{style}}">
+    <view class="loading" wx:if="{{loading}}"></view>
+    <image class="BG" src="../images/poster_4.jpg" mode="aspectFit">
+        
+    </image>
+    <button  class='xz_submit' wx:if="{{!loading&&!hasUserInfo && canIUse}}" open-type="getUserInfo" lang='zh_CN' bindgetuserinfo="getUserInfo">确定</button>
+</view>

@@ -1,0 +1,22 @@
+<!--pages/save.wxml-->
+<view class='contianer'>
+  <view class='save_post'>
+    <view class='text'>已保存到手机相册！</view>
+    <view wx:for="{{imgalist}}" wx:key="{{id}}" wx:for-item="image" class="previewimg">  
+      <image src="{{image}}"  data-src="{{image}}" mode="aspectFit" bind:tap="previewImage"></image>  
+    </view>
+    <view class='msg'>
+      点开大图后，长按分享给朋友
+    </view>
+  </view>
+  <!-- <view class='save_url'>
+    <image src='/images/gift.png' mode="aspectFit"></image>
+    <view>
+      <button open-type="contact">点击回复529，关注泸州老窖VIP俱乐部</button>
+    </view>
+  </view> -->
+  <view class='save_btns'>
+    <view class='left'><button open-type="share" class='share'>发送给朋友</button></view>
+    <view class='right'bindtap='to_index'>回到首页</view>
+  </view>
+</view>

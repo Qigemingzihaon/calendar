@@ -1,0 +1,10 @@
+<!--pages/accredit .wxml-->
+<view class="content" style="{{style}}">
+    <view class="loading" wx:if="{{loading}}"></view>
+    <button
+        class='xz_submit'
+        open-type="getUserInfo"
+        lang='zh_CN'
+        bindgetuserinfo="getUserInfo">领取你的专属酒客话</button>
+        <!-- wx:if="{{!loading&&!hasUserInfo && canIUse}}" -->
+</view>

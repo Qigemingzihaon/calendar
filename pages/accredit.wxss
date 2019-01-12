@@ -1,0 +1,42 @@
+/* pages/accredit .wxss */
+.content{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-image: url(https://leaguer-1256376813.cos.ap-chengdu.myqcloud.com/89d88ac4ab4f431f88562f81a7270dee.jpg);
+    background-size:100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: top;
+}
+.BG{
+    width: 100%;
+    height: 100%;
+    float: left;
+    background:linear-gradient(to bottom,#56AEDE, #0A2B63);
+}
+.loading{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff;
+}
+.xz_submit{
+    width: 500rpx;
+    font-size: 36rpx;
+    position: absolute;
+    font-family: 'FZShuSong-Z01S';
+    border-radius: 50rpx;
+    border: 0;
+    background-color: #e6ce8e;
+    color: #000000;
+    bottom: 5%;
+    margin-left: -250rpx;
+    left: 50%;
+    -webkit-border-radius: 50rpx;
+    -moz-border-radius: 50rpx;
+    -ms-border-radius: 50rpx;
+    -o-border-radius: 50rpx;
+}
