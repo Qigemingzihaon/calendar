@@ -586,6 +586,7 @@ Page({
                   icon: 'none',
                   duration: 1000,
                 })
+                wx.hideLoading();
               } else if (res.confirm) {
                 wx.openSetting({
                   success(settingdata) {
@@ -596,6 +597,12 @@ Page({
                       },100)
                       // console.log('获取权限成功，再次点击图片保存到相册')
                     } else {
+                      wx.hideLoading();
+                      wx.showToast({
+                        title: '授权失败',
+                        icon: 'none',
+                        duration: 1000,
+                      })
                       // console.log('获取权限失败')
                     }
                   },
