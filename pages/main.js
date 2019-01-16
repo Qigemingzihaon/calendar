@@ -567,6 +567,11 @@ Page({
     wx.saveImageToPhotosAlbum({
       filePath: upUrl,
       success(res) {
+        wx.showToast({
+          title: '保存成功,请在相册查看！',
+          icon: 'none',
+          duration: 3000,
+        })
         that.savesever(upurl)
       },
       fail(res) {
@@ -583,16 +588,23 @@ Page({
                 wx.showToast({
                   title: '拒绝授权',
                   icon: 'none',
-                  duration: 1000,
+                  duration: 3000,
                 })
               } else if (res.confirm) {
                 wx.openSetting({
                   success(settingdata) {
                     // console.log(settingdata)
                     if (settingdata.authSetting['scope.writePhotosAlbum']) {
-                      that.savePhotos(upUrl,upurl)
+                      setTimeout(() => {
+                        that.savePhotos(upUrl,upurl)
+                      }, 500);
                       // console.log('获取权限成功，再次点击图片保存到相册')
                     } else {
+                      wx.showToast({
+                        title: '授权失败',
+                        icon: 'none',
+                        duration: 3000,
+                      })
                       // console.log('获取权限失败')
                     }
                   },
@@ -601,7 +613,7 @@ Page({
             },
           })
         } else if (res.errMsg != 'saveImageToPhotosAlbum:fail cancel') {
-          // that.modelshow('请重试')
+          that.modelshow('请重试')
         }
       },
     })
