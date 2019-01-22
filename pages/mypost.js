@@ -17,20 +17,41 @@ Page({
     pagesize: 10,
     onload: false,
     loaded: false,
+    hiddenmodalput:true,
+    items: {
+      name: 1, value: '是否不再提醒',checked:false,
+    },
+    index:null,
+    request:true,
   },
-  /**
-   * 删除海报
-   */
-  deletecoll(e){
-    let index = e.currentTarget.dataset.index||e.target.dataset.index;
+  radiocoll(){
+    this.setData({
+      'items.checked':!this.data.items.checked
+    })
+  },
+  cancelM:function(e){
+    this.setData({
+      hiddenmodalput: true,
+      'items.checked':false,
+    })
+  },
+  confirmM: function (e) {
+    this.setData({
+      hiddenmodalput: true,
+    })
+    this.delete_coll()
+  },
+  delete_coll(){
     let that = this;
     let p_list = [...this.data.p_list];
-    let logid = p_list.splice(index,1)[0].logid;
+    let logid = p_list.splice(that.data.index,1)[0].logid;
+    if(!that.data.request){
+      return
+    }
     util.httpRequest('/aromainfo/deletelog', {
       'logid': logid
     }, 'POST',
       function (res) {
-        // console.log(res.data.length,undefined != res.data.length,undefined == res.data.length || res.data.length < num)
         if(res.status==1){
           that.setData({
             p_list:p_list,
@@ -38,8 +59,28 @@ Page({
         }else{
           util.toast('稍后再试',true,'none')
         }
+        that.setData({
+          request:true,
+        })
       }
     )
+  },
+  /**
+   * 删除海报
+   */
+  deletecoll(e){
+    let index = e.currentTarget.dataset.index||e.target.dataset.index;
+    if(this.data.items.checked){
+      this.setData({
+        index:index
+      })
+      this.delete_coll()
+    }else{
+      this.setData({
+        hiddenmodalput: false,
+        index:index
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载

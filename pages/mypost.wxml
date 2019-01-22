@@ -1,8 +1,14 @@
 <!--pages/mypost.wxml-->
 <official-account style="border:0rpx;"></official-account>
-
+<modal hidden="{{hiddenmodalput}}" title="删除图片" confirm-text="是" cancel-text="否" bindcancel="cancelM" bindconfirm="confirmM">
+  <view class="" style="height:80rpx;text-align: center;">
+    确定要删除该图片？
+  </view>
+  <view class="radio" style="height:50rpx;line-height:50rpx;">
+    <radio style="margin-left:10rpx;" bind:tap="radiocoll" value="{{items.name}}" checked="{{items.checked}}"/>{{items.value}}
+  </view>
+</modal>
 <view class='my-title'>
-
   <text>我的海报</text>
   <image src="{{avatarUrl}}"></image>
 </view>
