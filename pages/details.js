@@ -70,7 +70,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.verifycoll()
   },
 
   /**
@@ -107,6 +107,7 @@ Page({
   onShareAppMessage: function () {
     let that = this;
     let logid = that.data.logid;
+    util.httpRequest('/aromainfo/useshare', {}, 'POST',function (res) {})//数据收集
     return {
       title: '我的专属酒话，JIU是这么拽，你也试试',
       // desc: '自定义分享描述',
@@ -126,6 +127,7 @@ Page({
       filePath: upUrl,
       success(res) {
         console.log(res)
+        util.httpRequest('/aromainfo/usesave', {sendid:that.data.logid}, 'POST',function (res) {})//数据收集
         // that.savesever(upurl)
         wx.showToast({
           title: '保存成功,请在相册查看！',

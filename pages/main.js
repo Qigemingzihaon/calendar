@@ -371,7 +371,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    app.verifycoll()
   },
 
   /**
@@ -485,6 +485,7 @@ Page({
    * 更换一个模版
    */
   chg_tpl: function() {
+    // console.log(app)
     if(this.data.planshow){
       return
     }
@@ -575,7 +576,7 @@ Page({
         that.savesever(upurl)
       },
       fail(res) {
-        console.log(res.errMsg)
+        // console.log(res.errMsg)
         // that.modelshow(res.errMsg)
         if (res.errMsg === 'saveImageToPhotosAlbum:fail auth deny' ||
           res.errMsg === 'saveImageToPhotosAlbum:fail:auth denied') {
@@ -590,6 +591,7 @@ Page({
                   icon: 'none',
                   duration: 3000,
                 })
+                wx.hideLoading();
               } else if (res.confirm) {
                 wx.openSetting({
                   success(settingdata) {

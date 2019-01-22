@@ -17,6 +17,6 @@
   </view> -->
   <view class='save_btns'>
     <view class='left'><button open-type="share" class='share'>发送给朋友</button></view>
-    <view class='right'bindtap='to_index'>回到首页</view>
+    <view class='right' bindtap='to_index'>回到首页</view>
   </view>
 </view>

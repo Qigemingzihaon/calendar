@@ -14,7 +14,7 @@
 </view>
 <scroll-view scroll-y="true" scroll-top='{{topNum}}' bindscroll="scrolltoupper" bindscrolltolower="searchScrollLower">
   <view class='post_list'>
-    <view class="post_item " wx:for="{{p_list}}" wx:key="{{logid}}" wx:for-item="it">
+    <view class="post_item " wx:for="{{p_list}}" wx:key="{{index}}" wx:for-item="it">
       <image mode="aspectFit" class="post_img" src='{{it.imgurl}}' data-id="{{it.logid}}" bindtap='show_detail' ></image>
       <view class='bar'>
         <view class='left'>
@@ -22,7 +22,7 @@
           <text>{{it.peopnum}}</text>
         </view>
         <view class='right'>
-          <!-- <image class="trash" src='/images/trash.png'></image> -->
+          <image data-index="{{index}}" catch:tap="deletecoll" class="trash" src='/images/trash.png'></image>
         </view>
       </view>
     </view>

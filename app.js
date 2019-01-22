@@ -44,6 +44,18 @@ App({
       })
     }
   },
+  /**
+   * 验证权限
+   */
+  verifycoll(){
+    if (undefined == this.globalData.token ||
+      null == this.globalData.token ||
+      undefined == this.globalData.userInfo||!wx.getStorageSync('token')) {
+      wx.redirectTo({
+        url: '/pages/accredit',
+      })
+    }
+  },
   onLaunch: function() {
     this.applyUpdate()
     // // 展示本地存储能力

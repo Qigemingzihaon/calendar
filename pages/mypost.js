@@ -18,7 +18,29 @@ Page({
     onload: false,
     loaded: false,
   },
-
+  /**
+   * 删除海报
+   */
+  deletecoll(e){
+    let index = e.currentTarget.dataset.index||e.target.dataset.index;
+    let that = this;
+    let p_list = [...this.data.p_list];
+    let logid = p_list.splice(index,1)[0].logid;
+    util.httpRequest('/aromainfo/deletelog', {
+      'logid': logid
+    }, 'POST',
+      function (res) {
+        // console.log(res.data.length,undefined != res.data.length,undefined == res.data.length || res.data.length < num)
+        if(res.status==1){
+          that.setData({
+            p_list:p_list,
+          })
+        }else{
+          util.toast('稍后再试',true,'none')
+        }
+      }
+    )
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -43,7 +65,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.verifycoll()
   },
 
   /**

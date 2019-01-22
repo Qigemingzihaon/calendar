@@ -49,7 +49,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.verifycoll()
   },
 
   /**
@@ -99,9 +99,9 @@ Page({
     // let rnd = Math.random()*1000000;
     // let rnd = (new Date()).getTime();
     // console.log('rnd:' + rnd);
+    util.httpRequest('/aromainfo/useshare', {}, 'POST',function (res) {})//数据收集
     let logid = app.globalData.my_post.logid;
     // console.log('logid:' + logid);
-
     //todo 是否调用统计分享接口？
     return {
       title: '我的专属酒话，JIU是这么拽，你也试试',
