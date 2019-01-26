@@ -205,19 +205,31 @@ Page({
    */
   skipcoll(){
     // console.log('跳转')
-    if (this.data.jumpToShare){
-      wx.redirectTo({
-        url: '/pages/share?logid='+this.data.logid+'&visittype='+this.data.visittype,
-      })
-    }
-    else if (app.globalData.user.sessionkey){
-      wx.redirectTo ({
-        url: '/pages/main',
-      });
+    if (app.globalData.report){
+      if (this.data.jumpToShare){
+        wx.redirectTo({
+          url: '/pages/notice/index?logid='+this.data.logid+'&visittype='+this.data.visittype,
+        })
+      }else{
+        wx.redirectTo({
+          url: '/pages/notice/index',
+        })
+      }
     }else{
-      wx.redirectTo ({
-        url: '/pages/chs_calandar',
-      });
+      if (this.data.jumpToShare){
+        wx.redirectTo({
+          url: '/pages/share?logid='+this.data.logid+'&visittype='+this.data.visittype,
+        })
+      }
+      else if (app.globalData.user.sessionkey){
+        wx.redirectTo ({
+          url: '/pages/main',
+        });
+      }else{
+        wx.redirectTo ({
+          url: '/pages/chs_calandar',
+        });
+      }
     }
   },
   /**

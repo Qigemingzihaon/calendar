@@ -1,0 +1,24 @@
+<!--pages/notice/index.wxml-->
+<view class="content">
+    <view class="notice_text">
+        <view class="title" hover-class="none" hover-stop-propagation="false">
+            标题标题
+        </view>
+        <view class="content_text" hover-class="none" hover-stop-propagation="false">
+            公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容。
+        </view>
+    </view>
+    <view class="notice_img" hover-class="none" hover-stop-propagation="false">
+        <image class="left" src="../../images/a.jpg" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+        <image class="right" src="../../images/a.jpg" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+    </view>
+    <view bind:tap="savepostcoll" class="notice_btn" hover-class="none" hover-stop-propagation="false">
+        <view class="notice_btn_s" hover-class="none" hover-stop-propagation="false">
+        </view>
+        保存到我的海报
+    </view>
+    <view bind:tap="skipcoll" class="notice_skip" hover-class="none" hover-stop-propagation="false">
+        跳过
+    </view>
+</view>
+  

@@ -57,7 +57,7 @@
       </view>
       <scroll-view scroll-x class='tamp_list tp_img_list' bindscrolltolower='load_tampimg'>
         <view class="tp_item tp_img_img" wx:for="{{tampimg_list}}" wx:for-item="img" wx:key="index" data-index="{{index}}" bindtap='selectoneimg'>
-          <image mode="aspectFill" class="tp_img tp_img_img {{img.selected ? 'selected' : ''}}" src='{{img.imgurl}}'></image>
+          <image mode="aspectFit" class="tp_img tp_img_img {{img.selected ? 'selected' : ''}}" src='{{img.imgurl}}'></image>
         </view>
       </scroll-view>
 

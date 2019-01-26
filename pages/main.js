@@ -191,6 +191,7 @@ Page({
         util.toast('超时请重试', false,'none')
         this.setData({
           overtime:false,
+          planshow: false,
         });
       }
     }, 10)
@@ -346,6 +347,7 @@ Page({
         util.toast('超时请重试', false,'none')
         this.setData({
           overtime:false,
+          planshow: false,
         });
       }
     }, 40)

@@ -48,6 +48,9 @@ Page({
     if(!that.data.request){
       return
     }
+    that.setData({
+      request:false,
+    })
     util.httpRequest('/aromainfo/deletelog', {
       'logid': logid
     }, 'POST',

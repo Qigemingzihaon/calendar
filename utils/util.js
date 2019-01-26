@@ -112,8 +112,9 @@ function logincoll(_this, app, callback) {
           if (re.status == 1) {
             // console.log(re.data)
             wx.setStorageSync ('token', re.data.token);
-            app.globalData.token = re.data.token
-            app.globalData.user = re.data.user
+            app.globalData.token = re.data.token;
+            app.globalData.user = re.data.user;
+            app.globalData.report = re.data.report;
             // console.log(app.globalData.user)
             try {
               wx.setStorageSync('token', re.data.token)
