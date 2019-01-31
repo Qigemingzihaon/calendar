@@ -1,38 +1,71 @@
-// pages/notice/index.js
-var util = require('../../utils/util.js')
+// pages/notice/notice/index.js
+var util = require('../../../utils/util.js')
 const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     windowHeight:'',
+    savepost:false,
+    rule:false,
   },
-  noticecoll(){
+  /**
+   * 保存海报或跳过跳转
+   */
+  skip_coll(){
+    // console.log('跳转')
     if (this.data.jumpToShare){
       wx.redirectTo({
-        url:'/pages/notice/notice/index?logid='+this.data.logid+'&visittype='+this.data.visittype,
+        url: '/pages/share?logid='+this.data.logid+'&visittype='+this.data.visittype,
       })
+    }
+    else if (app.globalData.user.sessionkey){
+      wx.redirectTo ({
+        url: '/pages/main',
+      });
     }else{
-      wx.redirectTo({
-        url:'/pages/notice/notice/index',
-      })
+      wx.redirectTo ({
+        url: '/pages/chs_calandar',
+      });
     }
   },
   /**
-   * 获取公告信息
+   * 
    */
-  getnoticecoll(){
-
+  escrulecoll(){
+    this.setData({
+      rule:false,
+    })
+  },
+  savepostcoll(){
+    let that = this;
+    wx.showLoading({
+      title: '领取中',
+    })
+    util.httpRequest('/aromainfo/saveactivity', {}, 'POST', function (res){
+      // console.log(res)
+      if(res.status==1){
+        that.setData({
+          savepost:true,
+        })
+      }else{
+        util.toast(res.message, true,'none')
+      }
+      wx.hideLoading();
+    })
+  },
+  lookcoll(){
+    this.setData({
+      rule:true,
+    })
   },
   getWHcoll(){
     let that = this;
     wx.getSystemInfo({
       success(res) {
         that.setData({
-          // 'windowHeight':res.windowHeight + 'px',
-          'windowHeight':res.windowHeight,
+          'windowHeight':res.windowHeight
         })
         // console.log(res.model)
         // console.log(res.pixelRatio)
@@ -49,7 +82,7 @@ Page({
    */
   onLoad: function (options) {
     this.getWHcoll()
-    this.getnoticecoll()
+
     if (undefined != options['logid']) {
       this.setData({
         logid: options['logid'],

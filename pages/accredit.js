@@ -205,7 +205,7 @@ Page({
    */
   skipcoll(){
     // console.log('跳转')
-    if (app.globalData.report){
+    if (app.globalData.report&&app.globalData.todaynum<1){
       if (this.data.jumpToShare){
         wx.redirectTo({
           url: '/pages/notice/index?logid='+this.data.logid+'&visittype='+this.data.visittype,
@@ -236,20 +236,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.loadFontFace({
-      family: 'FZShuSong-Z01S',
-      source: 'url("https://gatewayfile.oss-cn-shenzhen.aliyuncs.com/aroma/font/FZSSJW--GB1-0.ttf")',
-      // source: 'url("https://leaguer-1256376813.cos.ap-chengdu.myqcloud.com/f862 3ead47634224875b0b42e733cb07.ttf")',
-      success: function(res) {
-        // console.log(res) //  loaded
-      },
-      fail: function(res) {
-        // console.log(res) //  error
-      },
-      complete: function(res) {
-        // console.log(res);
-      }
-    });
+    // wx.loadFontFace({
+    //   family: 'FZShuSong-Z01S',
+    //   source: 'url("https://gatewayfile.oss-cn-shenzhen.aliyuncs.com/aroma/font/FZSSJW--GB1-0.ttf")',
+    //   // source: 'url("https://leaguer-1256376813.cos.ap-chengdu.myqcloud.com/f862 3ead47634224875b0b42e733cb07.ttf")',
+    //   success: function(res) {
+    //     // console.log(res) //  loaded
+    //   },
+    //   fail: function(res) {
+    //     // console.log(res) //  error
+    //   },
+    //   complete: function(res) {
+    //     // console.log(res);
+    //   }
+    // });
     if (undefined != options['logid']) {
       this.setData({
         logid: options['logid'],

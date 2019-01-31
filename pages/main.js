@@ -13,6 +13,7 @@ Page({
   data: {
     loading:true,
     img_src: '',
+    img_src_url:'',
     expand: false,
     plan: 0,
     planshow: false,
@@ -48,6 +49,7 @@ Page({
     postImageHeight: '1334rpx',
     overtime:false,
     gettime:false,
+    backtype:1,//获取海报类型，1url
   },
   /**
    * init
@@ -95,20 +97,20 @@ Page({
     if(app.globalData.family){
 
     }else{
-      wx.loadFontFace({
-        family: 'FZShuSong-Z01S',
-        source: 'url("https://gatewayfile.oss-cn-shenzhen.aliyuncs.com/aroma/font/FZSSJW--GB1-0.ttf")',
-        success: function(res) {
-          // console.log(res) //  loaded
-          app.globalData.family = true;
-        },
-        fail: function(res) {
-          // console.log(res) //  error
-        },
-        complete: function(res) {
-          // console.log(res);
-        }
-      });
+      // wx.loadFontFace({
+      //   family: 'FZShuSong-Z01S',
+      //   source: 'url("https://gatewayfile.oss-cn-shenzhen.aliyuncs.com/aroma/font/FZSSJW--GB1-0.ttf")',
+      //   success: function(res) {
+      //     // console.log(res) //  loaded
+      //     app.globalData.family = true;
+      //   },
+      //   fail: function(res) {
+      //     // console.log(res) //  error
+      //   },
+      //   complete: function(res) {
+      //     // console.log(res);
+      //   }
+      // });
     }
     // this.userInfoinit()
     let that = this
@@ -244,7 +246,7 @@ Page({
     that.setData({
       gettime:true,
     })
-    let data = {};
+    let data = { backtype: that.data.backtype};
     if(B){
       data.jhword = app.globalData.choose_wine.wordbody;
       data.nickname = app.globalData.name;
@@ -256,27 +258,48 @@ Page({
       data.city = app.globalData.weather.city;
     }
     util.httpRequest('/aromainfo/generate', data, 'POST', function (qrres){
-      // console.log(qrres)
+      console.log(qrres)
       if(qrres.status==1){
-        base64src.base64src(qrres.data.url,function(fpath){
-          // console.log(fpath)
-          app.globalData.choose_tp.temid = qrres.data.temid;
-          app.globalData.choose_wine.wineid = qrres.data.keywordid;
-          app.globalData.keyword.id = qrres.data.wineid;
-          // wx.setStorageSync('myposter', qrres.data)
-          wx.setStorageSync('myposter', fpath)
-          that.setData({
-            poster: true,
+        if(data.backtype==1){
+          wx.getImageInfo({
+            src: qrres.data.url,
+            success: function (sres) {
+              console.log(sres.path);
+              app.globalData.choose_tp.temid = qrres.data.temid;
+              app.globalData.choose_wine.wineid = qrres.data.keywordid;
+              app.globalData.keyword.id = qrres.data.wineid;
+              // wx.setStorageSync('myposter', qrres.data)
+              wx.setStorageSync('myposter', sres.path)
+              that.setData({
+                poster: true,
+                img_src_url:qrres.data.url
+              })
+            },
+            fail(err){
+              console.log(err)
+            },
           })
-          // 'function' == typeof callback && callback()
-        },function(e){
-          // console.log(e,'失败')
-          util.toast('请重试', false,'none');
-          that.setData({
-            overtime:false,
+        }else{
+          base64src.base64src(qrres.data.url,function(fpath){
+            // console.log(fpath)
+            app.globalData.choose_tp.temid = qrres.data.temid;
+            app.globalData.choose_wine.wineid = qrres.data.keywordid;
+            app.globalData.keyword.id = qrres.data.wineid;
+            // wx.setStorageSync('myposter', qrres.data)
+            wx.setStorageSync('myposter', fpath)
+            that.setData({
+              poster: true,
+            })
+            // 'function' == typeof callback && callback()
+          },function(e){
+            // console.log(e,'失败')
+            util.toast('请重试', false,'none');
+            that.setData({
+              overtime:false,
+            })
+            // 'function' == typeof callback && callback()
           })
-          // 'function' == typeof callback && callback()
-        })
+        }
       }else{
         util.toast('请重试', false,'none');
         that.setData({
@@ -662,33 +685,36 @@ Page({
     wx.showLoading({
       title: '保存中…',
     })
+    if(that.data.backtype==1){
+      that.savePhotos(that.data.img_src,that.data.img_src_url)
+    }else{
     //提交海报图片到服务器
-    util.uploadImage(
-      that.data.img_src,
-      function(res) {
-        // console.log(res)
-        if (res.statusCode == 200) {
-          let data = JSON.parse(res.data)
-          let upUrl = data.data[0]
-          wx.getImageInfo({
-            src: upUrl,
-            success(res) {
-              // console.log(res.width)
-              // console.log(res.path)
-              that.savePhotos(res.path,upUrl)
-            }
-          })
-        } else {
+      util.uploadImage(
+        that.data.img_src,
+        function(res) {
+          // console.log(res)
+          if (res.statusCode == 200) {
+            let data = JSON.parse(res.data)
+            let upUrl = data.data[0]
+            wx.getImageInfo({
+              src: upUrl,
+              success(res) {
+                // console.log(res.width)
+                // console.log(res.path)
+                that.savePhotos(res.path,upUrl)
+              }
+            })
+          } else {
+            wx.hideLoading();
+            util.toast('海报上传失败:' + res.errMsg, true,'none')
+          }
+        },
+        function(res) {
           wx.hideLoading();
-          util.toast('海报上传失败:' + res.errMsg, true,'none')
+          util.toast('海报上传失败，请重试！', true,'none')
         }
-      },
-      function(res) {
-        wx.hideLoading();
-        util.toast('海报上传失败，请重试！', true,'none')
-      }
-    )
- 
+      )
+    }
   },
 
   getWeather: function() {

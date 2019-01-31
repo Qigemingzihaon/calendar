@@ -1,0 +1,28 @@
+<!--pages/notice/notice/index.wxml-->
+<view class="content" style="min-height:{{windowHeight+'px'}}">
+    <view class="shade" wx:if="{{savepost}}">
+        <view class="Popout">
+            <image src="../../../images/modle.png" mode="aspectFit"></image>
+            <view bind:tap="skip_coll" class="esc"></view>
+        </view>
+    </view>
+    <view class="shade" wx:if="{{rule}}">
+        <view class="Popout rule">
+            <image src="../../../images/rule.png" mode="aspectFit"></image>
+            <view bind:tap="escrulecoll" class="esc"></view>
+        </view>
+    </view>
+    <view class="title">
+        <image class='log' src="../../../images/log.png" mode="aspectFit"/>
+        <image class="log_c  {{windowHeight>700?'log_c_top':''}}" src="../../../images/8_center.png" mode="aspectFit"/>
+    </view>
+    <view class="text_t {{windowHeight>700?'text_top':''}}">
+        <image src="../../../images/text.png" mode="aspectFit"/>
+    </view>
+    <view class="text_l">
+        <image bind:tap="lookcoll" src="../../../images/look.png" mode="aspectFit"/>
+    </view>
+    <view class="btn">
+        <image bind:tap="savepostcoll" src="../../../images/btn_l.png" mode="aspectFit"/>
+    </view>
+</view>

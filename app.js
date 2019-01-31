@@ -110,6 +110,7 @@ App({
   },
 
   globalData: {
+    todaynum:0,//活动海报今日保存数量
     report:false,//活动公告
     scope_userInfo: null,//是否可以获取到用户信息1可以2不可以
     userInfo: null,

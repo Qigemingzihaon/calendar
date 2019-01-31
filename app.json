@@ -2,6 +2,7 @@
   "pages": [
     "pages/accredit",
     "pages/notice/index",
+    "pages/notice/notice/index",
     "pages/main",
     "pages/save",
     "pages/mypost",
