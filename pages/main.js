@@ -84,6 +84,7 @@ Page({
   },
   onShareAppMessage: function () {
     let that = this;
+    // console.log('sssss')
     return {
       title: '我的专属酒话，JIU是这么拽，你也试试',
       // desc: '自定义分享描述',

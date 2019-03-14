@@ -225,7 +225,7 @@ Page({
               onload: false,
               loaded: undefined == tp_list.length || tp_list.length < that.data.pagesize,
               choose_tp_index: 0,
-              choose_tp: tp_list[0]
+              choose_tp: that.data.tp_list[0]
             });
           }else{
             that.setData({
@@ -233,7 +233,7 @@ Page({
               onload: false,
               loaded: undefined == tp_list.length || tp_list.length < that.data.pagesize,
               choose_tp_index: 0,
-              choose_tp: tp_list[0]
+              choose_tp: that.data.tp_list[0]
             });
             // util.toast('暂无更多模板',true,'none')
           }
