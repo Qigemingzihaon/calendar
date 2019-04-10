@@ -140,7 +140,7 @@ Page({
     // console.log(wx.getStorageSync('myposter'))
     this.setData({
       // img_src: wx.getStorageSync('myCanvas'),
-      img_src: wx.getStorageSync('myposter'),
+      img_src: app.globalData.onelogin?wx.getStorageSync('myposter'):'../images/GIF.gif',
     })
   },
   loadingcoll() {
@@ -212,6 +212,7 @@ Page({
       let token = wx.getStorageSync('token')
       if(!this.data.loading&&app.globalData.scope_userInfo==1&&token){
         clearInterval(time)
+        // console.log('ss')
         // console.log(wx.getStorageSync('token'),!wx.getStorageSync('myposter'),0 == app.globalData.weather.length)
         // if(!wx.getStorageSync('myCanvas')){
         if(!wx.getStorageSync('myposter')){
@@ -226,6 +227,9 @@ Page({
           //前端绘制海报图片
           // this.loadingcoll()
           // this.getimagecoll()
+        }else if(app.globalData.onelogin){
+          app.globalData.onelogin=false;
+          this.chg_tpl()
         }
       }
     },10)
@@ -259,13 +263,13 @@ Page({
       data.city = app.globalData.weather.city;
     }
     util.httpRequest('/aromainfo/generate', data, 'POST', function (qrres){
-      console.log(qrres)
+      // console.log(qrres)
       if(qrres.status==1){
         if(data.backtype==1){
           wx.getImageInfo({
             src: qrres.data.url,
             success: function (sres) {
-              console.log(sres.path);
+              // console.log(sres.path);
               app.globalData.choose_tp.temid = qrres.data.temid;
               app.globalData.choose_wine.wineid = qrres.data.keywordid;
               app.globalData.keyword.id = qrres.data.wineid;
@@ -277,7 +281,7 @@ Page({
               })
             },
             fail(err){
-              console.log(err)
+              // console.log(err)
             },
           })
         }else{
@@ -305,6 +309,8 @@ Page({
         util.toast('请重试', false,'none');
         that.setData({
           overtime:false,
+          planshow: false,
+          poster:true,
         })
       }
     })
@@ -326,7 +332,7 @@ Page({
       overtime++;
       let a = that.data.getimage //图片加载
       let b = that.data.poster //海报绘制完成
-      // console.log(a, this.data.poster)
+      // console.log(a, b )
       if (that.data.plan <= 98) {
         if(that.data.plan == 40){
           this.setData({
@@ -594,18 +600,14 @@ Page({
     wx.saveImageToPhotosAlbum({
       filePath: upUrl,
       success(res) {
-        wx.showToast({
-          title: '保存成功,请在相册查看！',
-          icon: 'none',
-          duration: 3000,
-        })
+
         that.savesever(upurl)
       },
       fail(res) {
         // console.log(res.errMsg)
         // that.modelshow(res.errMsg)
         if (res.errMsg === 'saveImageToPhotosAlbum:fail auth deny' ||
-          res.errMsg === 'saveImageToPhotosAlbum:fail:auth denied') {
+          res.errMsg === 'saveImageToPhotosAlbum:fail:auth denied'||'saveImageToPhotosAlbum:fail authorize no response') {
           //重新授权
           wx.showModal({
             title: '请求授权保存海报',
@@ -669,6 +671,11 @@ Page({
             function() {}
           )
           wx.hideLoading();
+          wx.showToast({
+            title: '保存成功,请在相册查看！',
+            icon: 'none',
+            duration: 3000,
+          })
           wx.navigateTo({
             url: '/pages/save',
           })

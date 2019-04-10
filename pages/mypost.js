@@ -56,6 +56,9 @@ Page({
     }, 'POST',
       function (res) {
         if(res.status==1){
+          if(p_list.length===4){
+            that.get_info();
+          }
           that.setData({
             p_list:p_list,
           })
@@ -156,6 +159,7 @@ Page({
           that.setData({
             p_list: that.data.p_list.concat(res.data),
             onload: false,
+            page:that.data.page+1,
             loaded: undefined == res.data.length || res.data.length == num
           });
         }else if(res.status==1&&undefined == res.data.length){
@@ -174,7 +178,7 @@ Page({
     // console.log(!that.data.onload && that.data.loaded)
     if (!that.data.onload && that.data.loaded) {
       that.setData({
-        page: that.data.page + 1,  //每次触发上拉事件，把searchPageNum+1
+        // page: that.data.page + 1,  //每次触发上拉事件，把searchPageNum+1
         onload:true
       });
       wx.showLoading({
@@ -231,7 +235,7 @@ Page({
     // console.log(!that.data.onload && that.data.loaded)
     if (!that.data.onload && that.data.loaded) {
       that.setData({
-        page: that.data.page + 1,  //每次触发上拉事件，把searchPageNum+1
+        // page: that.data.page + 1,  //每次触发上拉事件，把searchPageNum+1
         onload:true
       });
       wx.showLoading({

@@ -274,7 +274,7 @@ Page ({
       function (res) {
         // console.log (res);
         if (res.status == 1) {
-          wx.redirectTo ({
+          wx.reLaunch ({
             url: '/pages/main',
           });
         } else {

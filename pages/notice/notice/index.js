@@ -21,7 +21,7 @@ Page({
       })
     }
     else if (app.globalData.user.sessionkey){
-      wx.redirectTo ({
+      wx.reLaunch ({
         url: '/pages/main',
       });
     }else{

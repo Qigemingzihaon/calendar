@@ -119,7 +119,7 @@ Page({
 
   to_index: function () {
     util.httpRequest('/aromainfo/usetudo', {}, 'POST',function (res) {})//数据收集
-    wx.navigateTo({
+    wx.reLaunch({
       url: '/pages/main',
     })
   },
@@ -127,7 +127,7 @@ Page({
   onShareAppMessage: function () {
     let that = this;
     let logid = that.data.logid;
-    util.httpRequest('/aromainfo/useshare', {}, 'POST',function (res) {})//数据收集
+    util.httpRequest('/aromainfo/useshare', {sendid:logid}, 'POST',function (res) {})//数据收集
     return {
       title: '我的专属酒话，JIU是这么拽，你也试试',
       // desc: '自定义分享描述',

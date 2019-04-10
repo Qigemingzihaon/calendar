@@ -89,9 +89,12 @@ Page({
   },
 
   to_index:function(){
-    wx.navigateTo({
-      url: '/pages/main',
+    wx.navigateBack({
+      delta: 1
     })
+    // wx.redirectTo({
+    //   url: '/pages/main',
+    // })
   },
   
   onShareAppMessage: function () {
@@ -99,8 +102,8 @@ Page({
     // let rnd = Math.random()*1000000;
     // let rnd = (new Date()).getTime();
     // console.log('rnd:' + rnd);
-    util.httpRequest('/aromainfo/useshare', {}, 'POST',function (res) {})//数据收集
     let logid = app.globalData.my_post.logid;
+    util.httpRequest('/aromainfo/useshare', {sendid:logid}, 'POST',function (res) {})//数据收集
     // console.log('logid:' + logid);
     //todo 是否调用统计分享接口？
     return {

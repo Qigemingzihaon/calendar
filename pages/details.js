@@ -107,7 +107,7 @@ Page({
   onShareAppMessage: function () {
     let that = this;
     let logid = that.data.logid;
-    util.httpRequest('/aromainfo/useshare', {}, 'POST',function (res) {})//数据收集
+    util.httpRequest('/aromainfo/useshare', {sendid:logid}, 'POST',function (res) {})//数据收集
     return {
       title: '我的专属酒话，JIU是这么拽，你也试试',
       // desc: '自定义分享描述',
@@ -126,7 +126,7 @@ Page({
     wx.saveImageToPhotosAlbum({
       filePath: upUrl,
       success(res) {
-        console.log(res)
+        // console.log(res)
         util.httpRequest('/aromainfo/usesave', {sendid:that.data.logid}, 'POST',function (res) {})//数据收集
         // that.savesever(upurl)
         wx.showToast({
@@ -136,7 +136,7 @@ Page({
         })
       },
       fail(res) {
-        console.log(res.errMsg)
+        // console.log(res.errMsg)
         // that.modelshow(res.errMsg)
         if (res.errMsg === 'saveImageToPhotosAlbum:fail auth deny' ||
           res.errMsg === 'saveImageToPhotosAlbum:fail:auth denied') {
@@ -184,7 +184,7 @@ Page({
     wx.getImageInfo({
       src: that.data.imgurl[0],
       success: function (sres) {
-        console.log(sres.path);
+        // console.log(sres.path);
         that.savePhotos(sres.path)
         // wx.saveImageToPhotosAlbum({
         //   filePath: sres.path,
@@ -228,7 +228,7 @@ Page({
         // })
       },
       fail(err){
-        console.log(err)
+        // console.log(err)
       },
     })
     

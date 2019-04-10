@@ -225,7 +225,7 @@ Page({
               onload: false,
               loaded: undefined == tp_list.length || tp_list.length < that.data.pagesize,
               choose_tp_index: 0,
-              choose_tp: that.data.tp_list[0]
+              choose_tp: tp_list[0]
             });
           }else{
             that.setData({
@@ -407,7 +407,8 @@ Page({
         app.globalData.choose_wine.wordlist.splice(index)
       }
     });
-    wx.navigateTo({
+    // console.log("start save to global...0000")
+    wx.reLaunch({
       url: '/pages/main',
     })
     // util.getUrlImage(this.data.choose_tp.backgroundurl,function(resPath){
