@@ -1,5 +1,6 @@
 // pages/viewer.js
 var util = require('../utils/util.js')
+const app = getApp()
 Page({
 
   /**
